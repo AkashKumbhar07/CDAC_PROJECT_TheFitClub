@@ -1,0 +1,43 @@
+
+.reg-body {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../assets/im1.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keep the background fixed */
+}
+
+.container-reg{
+  margin-left: 30%;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  border-radius: 5px;
+  padding: 20px;
+  width: 400px;
+  display: block;
+  overflow-y: auto; /* Add scrollbar if content overflows */
+  max-height: 80vh; /* Limit the height to allow scrolling (viewport height.) 1vh == 1%*/
+  width: 40%;
+  text-align: left;
+}
+
+h2{
+  text-align: center;
+}
+
+.tr-reg-link{
+    position: absolute;
+    margin-top: 5%;
+    border-style:solid;
+    border-radius: 5px;
+    border-color: whitesmoke;
+    border-width: 10px;
+    left: 8rem;
+    top: 2rem;
+    background-color: whitesmoke;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+

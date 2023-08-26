@@ -1,0 +1,65 @@
+/* UserProfile.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.gym-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fcfcfc;
+  min-height: 100vh; /* Ensure the container covers the whole viewport height */
+  margin: 20px; /* Add margin to all sides */
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.profile h2,
+.diet-table h2,
+.exercise-table h2 {
+  margin-bottom: 10px;
+}
+
+.profile p,
+.diet-table table,
+.exercise-table table {
+  font-size: 16px;
+}
+
+.diet-table table,
+.exercise-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.diet-table th,
+.diet-table td,
+.exercise-table th,
+.exercise-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.profile-user {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

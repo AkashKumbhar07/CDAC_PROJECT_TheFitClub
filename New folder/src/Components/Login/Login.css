@@ -1,0 +1,103 @@
+/* .cascading-right {
+    margin-right: -50px;
+  }
+  
+  @media (max-width: 900px) {
+    .cascading-right {
+      margin-right: 0;
+    }
+  }
+
+  .image>img{
+    right:20px;
+  } */
+
+  /* Login.css */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-top: 20%;
+    /* border-radius: 4px; */
+  }
+  
+  .login-form {
+    width: 600px;
+    height: 350px;
+    padding: px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  
+  }
+  
+  .login-heading {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align:center; 
+  }
+  
+  .form-control {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  
+  }
+
+  /* label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  } */
+  
+  button.btn-primary {
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 35%;
+    
+  }
+  
+  .text-center {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 225px;
+    text-decoration: none;
+  }
+  
+  /* .social-icons {
+    text-align: center;
+  } */
+  
+  /* .social-icon {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #1266f1;
+  } */
+  
+  .login-image {
+    padding: 50px;
+    padding-bottom: 500px;
+    width: 450px;
+    height: 300px;
+  }
+  
+  .rounded {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

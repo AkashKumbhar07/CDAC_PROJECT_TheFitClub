@@ -1,0 +1,38 @@
+
+
+.Bmr {
+    margin-left: 30%;
+    width: 600px;
+    background:var(--planCard);
+    padding: 20px;
+    border-radius: 15px;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    /* align-items: center; */
+    
+}
+select{
+    border-radius: 8px;
+}
+input{
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+}
+label{
+    width: 140px;
+    display: inline-block;
+    margin: 0.2cm;
+    text-align: left;
+}
+.btnn{
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+    color: white;
+    background-color: black ;
+}

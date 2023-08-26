@@ -1,0 +1,38 @@
+.table{
+    width: 85%; 
+    /* text-align: center;
+    justify-content: center; 
+    border-style:groove;
+    border-radius: 10px; */
+    margin-top: 3%;
+    padding-top: 2px;
+    padding-left: 4px;
+    padding-bottom: 2px;
+}
+
+.table-b{
+    /* padding: 20px; */
+   /* justify-content: center;  */
+}
+
+/* tr{
+    padding: 10px;
+} */
+
+.link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--orange);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .link-button:hover {
+    background-color: black;
+  }

@@ -1,0 +1,17 @@
+.table{
+    width: 100%; 
+    text-align: center;
+    justify-content: center; 
+    border-style:groove;
+    border-radius: 10px;
+      
+}
+
+.table-b{
+    padding: 10px;
+   justify-content: center; 
+}
+
+tr{
+    padding: 10px;
+}
