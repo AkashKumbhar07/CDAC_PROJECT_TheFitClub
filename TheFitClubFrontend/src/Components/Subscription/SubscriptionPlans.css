@@ -1,0 +1,16 @@
+.Subscribe{
+    margin-top: 15%;
+    margin-right: 5%;
+    border-style:solid;
+  flex-direction: co;
+  margin-bottom: 25%;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+    
+}
+
+.suballlist{
+    border-style: solid;
+    border-radius: 5px;
+}

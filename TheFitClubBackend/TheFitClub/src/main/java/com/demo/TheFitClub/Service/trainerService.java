@@ -13,4 +13,14 @@ public interface trainerService {
 
 	void addTrainer(trainer t);
 
+	trainer savetr(trainer tr);
+
+	Optional<trainer> getBytrid(int trainer_id);
+
+	trainer acceptTrainerRegistration(int trainer_id);
+
+	void rejectTrainerRegistration(int trainer_id);
+
+	List<trainer> findAllActive();
+
 }

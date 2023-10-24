@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./Trainer.css"
-import Header2 from '../Header/Header2'
+import "./Trainer.css";
+import Header2 from '../Header/Header2';
+import SubscriptionPlans from '../Subscription/SubscriptionPlans';
 
 const TrainersList = () => {
   const [originalTrainers, setOriginalTrainers] = useState([]);
@@ -9,8 +10,9 @@ const TrainersList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState('');
   const [filterBy, setFilterBy] = useState('');
+  const [selectedTrainer, setSelectedTrainer] = useState(null);
 
-  const userid= sessionStorage.getItem('user')
+  const userid = sessionStorage.getItem('user');
 
   useEffect(() => {
     fetchTrainers();
@@ -19,7 +21,7 @@ const TrainersList = () => {
   const fetchTrainers = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get('http://localhost:8080/trainer/getTrainers');
+      const response = await axios.get('http://localhost:8080/trainer/getTrainersActive');
       setTrainers(response.data);
       setOriginalTrainers(response.data);
       setIsLoading(false);
@@ -48,31 +50,20 @@ const TrainersList = () => {
     setFilterBy(selectedFilter);
 
     if (selectedFilter === '') {
-      setTrainers(originalTrainers); 
+      setTrainers(originalTrainers);
     } else {
       const filteredTrainers = originalTrainers.filter(trainer => trainer.specialization === selectedFilter);
       setTrainers(filteredTrainers);
     }
   };
 
-  const handleSubscribe = async (trainerId,name) => {
-    try {
-      console.log(userid, trainerId)
-      const response = await axios.put(`http://localhost:8080/users/updateUser/${userid}/${trainerId}`);
-      if (response.status === 200) {
-        alert(`Subscribed to ${name}`);
-      } else {
-        alert('Subscription failed. Please try again later.');
-      }
-    } catch (error) {
-      console.error('Error subscribing to trainer:', error);
-      alert('An error occurred. Please try again later.');
-    }
+  const handleSubscribe = (trainer) => {
+    setSelectedTrainer(trainer);
   };
 
   return (
     <div className="main-container">
-      <Header2/>
+      <Header2 />
       <div className="filter-sort-container">
         <h2>Filter</h2>
         <div className="filter">
@@ -89,7 +80,6 @@ const TrainersList = () => {
           <label htmlFor="sortSelect">Sort by:</label>
           <select id="sortSelect" value={sortBy} onChange={handleSortChange}>
             <option value="">Select</option>
-            
             <option value="experience">Experience</option>
           </select>
         </div>
@@ -101,19 +91,26 @@ const TrainersList = () => {
         {trainers.length > 0 && (
           <ul>
             {trainers.map(trainer => (
-              <li className="card" key={trainer.trainer_id}> {trainer.profile_pic}<br/>
-                 {/* <strong>tid</strong>{trainer.trainer_id}<br/> */}
+              <li className="card" key={trainer.trainer_id}>
+                <img src={`data:image/jpeg;base64,${trainer.profile_pic}`} alt="ProfilePic" /><br />
                 <strong>Name:</strong> {trainer.name}<br />
                 <strong>Specialization:</strong> {trainer.specialization}<br />
                 <strong>Experience:</strong> {trainer.experience} years<br />
-                <strong>Bio:</strong> {trainer.bio} 
-                <button onClick={() => handleSubscribe(trainer.trainer_id,trainer.name)}>Subscribe</button>
-                </li>
-
+                <strong>Bio:</strong> {trainer.bio}
+                <button onClick={() => handleSubscribe(trainer)}>Subscribe</button>
+              </li>
             ))}
           </ul>
         )}
       </div>
+
+      {/* Conditionally render the SubscriptionPlans component */}
+      {selectedTrainer && (
+        <SubscriptionPlans
+          trainerId={selectedTrainer.trainer_id}
+          name={selectedTrainer.name}
+        />
+      )}
     </div>
   );
 };

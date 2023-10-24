@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.TheFitClub.Service.exercisesService;
-import com.demo.TheFitClub.Service.userService;
 import com.demo.TheFitClub.Service.workoutService;
 import com.demo.TheFitClub.model.exercises;
 import com.demo.TheFitClub.model.workout;
@@ -33,8 +32,7 @@ public class workoutController {
 	@Autowired
 	private workoutService workoutservice;
 
-	@Autowired
-	private userService userservice;
+	
 
 	// GET ALL EXERCISES
 	@GetMapping("/getExercise")

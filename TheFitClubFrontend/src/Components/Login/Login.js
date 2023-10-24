@@ -23,16 +23,12 @@ function Login() {
     .then(response => {
       setUser(response.data);
       if (response.data.role === 'user') {
-        alert('Login Successfully');
-        
         sessionStorage.setItem('user', JSON.stringify(response.data.login_id));
         Navigate('/');
       } else if (response.data.role === 'admin') {
-        alert('Login Successfully');
         sessionStorage.setItem('admin', JSON.stringify(response.data.login_id));
         Navigate('/adminDash');
       } else if (response.data.role === 'trainer') {
-        alert('Login Successfully');
         sessionStorage.setItem('trainer', JSON.stringify(response.data.login_id));
         Navigate('/trDashboard');
       } else {

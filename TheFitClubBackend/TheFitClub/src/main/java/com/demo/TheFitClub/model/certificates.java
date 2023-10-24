@@ -2,14 +2,10 @@ package com.demo.TheFitClub.model;
 
 import java.util.Arrays;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class certificates {
@@ -18,25 +14,19 @@ public class certificates {
 	private int certificate_id;
 	private String name;
 	private byte[] certificate_img;
-	@Transient
-	private String base64Image;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "trainer_id")
-	private trainer trainer;
+	private int trainer_id;
 
 	public certificates() {
 		super();
 	}
 
-	public certificates(int certificate_id, String name, byte[] certificate_img, String base64Image,
-			com.demo.TheFitClub.model.trainer trainer) {
+	public certificates(int certificate_id, String name, byte[] certificate_img, int trainer_id) {
 		super();
 		this.certificate_id = certificate_id;
 		this.name = name;
 		this.certificate_img = certificate_img;
-		this.base64Image = base64Image;
-		this.trainer = trainer;
+		this.trainer_id = trainer_id;
 	}
 
 	public int getCertificate_id() {
@@ -63,26 +53,22 @@ public class certificates {
 		this.certificate_img = certificate_img;
 	}
 
-	public String getBase64Image() {
-		return base64Image;
+	public int getTrainer_id() {
+		return trainer_id;
 	}
 
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
-	}
-
-	public trainer getTrainer() {
-		return trainer;
-	}
-
-	public void setTrainer(trainer trainer) {
-		this.trainer = trainer;
+	public void setTrainer_id(int trainer_id) {
+		this.trainer_id = trainer_id;
 	}
 
 	@Override
 	public String toString() {
 		return "certificates [certificate_id=" + certificate_id + ", name=" + name + ", certificate_img="
-				+ Arrays.toString(certificate_img) + ", base64Image=" + base64Image + ", trainer=" + trainer + "]";
+				+ Arrays.toString(certificate_img) + ", trainer_id=" + trainer_id + "]";
 	}
+
+	
+	
+	
 
 }

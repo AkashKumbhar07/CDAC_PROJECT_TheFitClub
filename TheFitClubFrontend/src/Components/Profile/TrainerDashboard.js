@@ -8,9 +8,10 @@ const TrainerDashboard = () => {
   const [clients, setClients] = useState([]);
   const [selectedClient, setSelectedClient] = useState(null);
   const [trainerProfile, setTrainerProfile] = useState(null);
+  const [certificate, setCertificate] = useState(null);
   const [measurements, setMeasurements] = useState(false);
   const [measurementData, setMeasurementData] = useState([]);
-
+  const tr_id = sessionStorage.getItem('trainer_id');
   const trlogin_id = sessionStorage.getItem('trainer');
   const Navigate = useNavigate();
 
@@ -31,10 +32,22 @@ const TrainerDashboard = () => {
         `http://localhost:8080/trainer/getTrainer/${trlogin_id}`
       );
       setTrainerProfile(response.data);
+      sessionStorage.setItem('trainer_id',JSON.stringify(response.data.trainer_id))
     } catch (error) {
       console.error('Error fetching trainer profile:', error);
     }
   };
+
+  const fetchCertificate = async() => {
+    try{
+      const response = await axios.get(`http://localhost:8080/trainer/certificates/${tr_id}`);
+      console.log(response.data);
+      var arr =([response.data]);
+      setCertificate(arr[0]);
+    } catch (error){
+      console.error('Error fetching Certificate:',error);
+    }
+  }
 
   const handleClientClick = (client) => {
     setSelectedClient(client);
@@ -42,6 +55,7 @@ const TrainerDashboard = () => {
 
   const handleProfileClick = () => {
     fetchTrainerProfile();
+    fetchCertificate();
   };
 
   const handleBackClick = () => {
@@ -57,6 +71,14 @@ const TrainerDashboard = () => {
   const diethandler = (userId) => {
     console.log(userId);
     Navigate(`/diet/${userId}`);
+  };
+
+  const addCerti = () =>{
+    Navigate(`/certificate`)
+  };
+  
+  const editProfile = ()=>{
+    Navigate(`/editProfile`)
   };
 
   const measurementHandler = async(userId) =>{
@@ -86,10 +108,14 @@ const TrainerDashboard = () => {
         <div className="trainer-profile card">
           <h1>Trainer Dashboard</h1>
           <button onClick={handleProfileClick}>Profile</button>
+          <button onClick={editProfile}>Edit Profile</button>
+          <button onClick={addCerti}>Add Certifications</button>
           <button onClick={fetchClients}>Fetch Clients</button>
+          
           <h3>Your Profile</h3>
           {trainerProfile && (
             <div>
+              <p><img src={`data:image/jpeg;base64,${trainerProfile.profile_pic}`} alt="ProfilePic" /></p>
               <p>Name: {trainerProfile.name}</p>
               <p>Specialization: {trainerProfile.specialization}</p>
               <p>Experience: {trainerProfile.experience} years</p>
@@ -98,6 +124,29 @@ const TrainerDashboard = () => {
               <p>City: {trainerProfile.city}</p>
             </div>
           )}
+          {certificate && (
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Certificate Name</th>
+                    <th>Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    certificate.map(certi =>(
+                      <tr key={certi.certificate_id}>
+                        <td>{certi.name}</td>
+                        <td><img src={`data:image/jpeg;base64,${certi.certificate_img}`} alt="Certificate" /></td>
+                      </tr>
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          )}
+          
         </div>
         {!selectedClient ? (
           <div className="usr-profile card">

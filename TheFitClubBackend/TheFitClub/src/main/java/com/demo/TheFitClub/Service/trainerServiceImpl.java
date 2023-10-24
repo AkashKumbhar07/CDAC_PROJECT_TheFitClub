@@ -3,6 +3,8 @@ package com.demo.TheFitClub.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,37 @@ public class trainerServiceImpl implements trainerService{
 	public void addTrainer(trainer t) {
 		trainerrepository.save(t);
 		
+	}
+
+	@Override
+	public trainer savetr(trainer tr) {
+		
+		return trainerrepository.save(tr);
+	}
+
+	@Override
+	public Optional<trainer> getBytrid(int trainer_id) {
+	
+		return trainerrepository.findById(trainer_id);
+	}
+	
+	
+	public trainer acceptTrainerRegistration(int trainer_id) {
+        trainer trainer = trainerrepository.findById(trainer_id)
+            .orElseThrow(() -> new EntityNotFoundException("Trainer not found"));
+
+        trainer.setIsActive(1);
+        return trainerrepository.save(trainer);
+    }
+
+    public void rejectTrainerRegistration(int trainer_id) {
+        trainerrepository.deleteById(trainer_id);
+    }
+
+	@Override
+	public List<trainer> findAllActive() {
+		
+		return trainerrepository.findAllActive();
 	}
 
 	

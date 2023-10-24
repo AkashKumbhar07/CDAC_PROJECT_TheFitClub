@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class trainer {
@@ -20,8 +19,6 @@ public class trainer {
 	private int trainer_id;
 	private String name;
 	private byte[] profile_pic;
-	@Transient
-	private String base64Image;
 	private LocalDate DOB;
 	private String gender;
 	private String email;
@@ -48,7 +45,6 @@ public class trainer {
 		this.trainer_id = trainer_id;
 		this.name = name;
 		this.profile_pic = profile_pic;
-		this.base64Image = base64Image;
 		DOB = dOB;
 		this.gender = gender;
 		this.email = email;
@@ -86,13 +82,6 @@ public class trainer {
 		this.profile_pic = profile_pic;
 	}
 
-	public String getBase64Image() {
-		return base64Image;
-	}
-
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
-	}
 
 	public LocalDate getDOB() {
 		return DOB;
@@ -185,7 +174,7 @@ public class trainer {
 	@Override
 	public String toString() {
 		return "trainer [trainer_id=" + trainer_id + ", name=" + name + ", profile_pic=" + Arrays.toString(profile_pic)
-				+ ", base64Image=" + base64Image + ", DOB=" + DOB + ", gender=" + gender + ", email=" + email
+				+ ", DOB=" + DOB + ", gender=" + gender + ", email=" + email
 				+ ", phoneNo=" + phoneNo + ", city=" + city + ", country=" + country + ", isActive=" + isActive
 				+ ", specialization=" + specialization + ", experience=" + experience + ", bio=" + bio + ", login="
 				+ login + "]";

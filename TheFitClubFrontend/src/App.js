@@ -16,6 +16,8 @@ import EditForm from './Components/AddWorkout/EditForm';
 import AddWorkout from './Components/AddWorkout/AddWorkout';
 import Diet from './Components/Profile/Diet';
 import AddNutri from './Components/AddWorkout/AddNutri';
+import AddCertificate from './Components/Certificates/AddCertificate';
+import EditProfiletr from './Components/EditProfile/EditProfiletr';
 
 
 // import TrainerRegistration from './Components/Registration/TrainerRegistration';
@@ -37,6 +39,8 @@ function App() {
     <Route path='/TrainerDB/:tr' element={<TrainerDashboard/>}></Route>
     <Route path='/diet/:userId' element={<Diet/>}></Route>
     <Route path='/addNutri/:userId' element={<AddNutri/>}></Route>
+    <Route path='/certificate' element={<AddCertificate/>}></Route>
+    <Route path='/editProfile' element={<EditProfiletr/>}></Route>
     </Routes>
 }
 
