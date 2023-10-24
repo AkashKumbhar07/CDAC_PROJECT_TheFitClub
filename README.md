@@ -11,7 +11,6 @@ TheFitClub is a cutting-edge web application designed to revolutionize your fitn
 - [Progress Monitoring](#progress-monitoring)
 - [Personalized Training](#personalized-training)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
